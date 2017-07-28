@@ -1,16 +1,19 @@
-class View<T> {
-  protected _elemento: Element;
+// declare var $: any;
+
+abstract class View<T> {
+  protected _elemento: JQuery;
 
   constructor(selector: string) {
-    this._elemento = document.querySelector(selector);
+    this._elemento = $(selector);
   }
 
   update(model: T): void {
-    this._elemento.innerHTML = this.template(model);
+    this._elemento.html(this.template(model));
   }
 
-  template(model: T): string {
+  abstract template(model: T): string;
+  // {
     // return `<p class="alert alert-info">${model}</p>`;
-    throw new Error('Você deve implemantar o método template');
-  }
+    // throw new Error('Você deve implemantar o método template');
+  // }
 }
